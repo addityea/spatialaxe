@@ -32,6 +32,9 @@
                     "@id": "assets/"
                 },
                 {
+                    "@id": "bin/"
+                },
+                {
                     "@id": "conf/"
                 },
                 {
@@ -42,6 +45,9 @@
                 },
                 {
                     "@id": "modules/"
+                },
+                {
+                    "@id": "modules/local/"
                 },
                 {
                     "@id": "modules/nf-core/"
@@ -121,8 +127,12 @@
         },
         {
             "@id": "main.nf",
-            "@type": ["File", "SoftwareSourceCode", "ComputationalWorkflow"],
-            "contributor": [
+            "@type": [
+                "File",
+                "SoftwareSourceCode",
+                "ComputationalWorkflow"
+            ],
+            "author": [
                 {
                     "@id": "https://orcid.org/0009-0008-2420-6464"
                 },
@@ -131,6 +141,11 @@
                 },
                 {
                     "@id": "https://orcid.org/0000-0002-3651-5685"
+                }
+            ],
+            "contributor": [
+                {
+                    "@id": "https://orcid.org/0000-0001-8259-7434"
                 }
             ],
             "dateCreated": "",
@@ -148,8 +163,20 @@
                 "transcriptomics",
                 "xenium"
             ],
-            "license": ["MIT"],
-            "name": ["nf-core/spatialaxe"],
+            "license": [
+                "MIT"
+            ],
+            "maintainer": [
+                {
+                    "@id": "https://orcid.org/0009-0008-2420-6464"
+                },
+                {
+                    "@id": "https://orcid.org/0000-0002-3651-5685"
+                }
+            ],
+            "name": [
+                "nf-core/spatialaxe"
+            ],
             "programmingLanguage": {
                 "@id": "https://w3id.org/workflowhub/workflow-ro-crate#nextflow"
             },
@@ -169,7 +196,7 @@
             "url": {
                 "@id": "https://www.nextflow.io/"
             },
-            "version": "!>=25.10.4"
+            "version": "!>=26.04.6"
         },
         {
             "@id": "#0be95392-5009-4c83-9eae-0f9c65ec6505",
@@ -208,6 +235,11 @@
             "description": "Additional files"
         },
         {
+            "@id": "bin/",
+            "@type": "Dataset",
+            "description": "Scripts that must be callable from a pipeline process"
+        },
+        {
             "@id": "conf/",
             "@type": "Dataset",
             "description": "Configuration files"
@@ -226,6 +258,11 @@
             "@id": "modules/",
             "@type": "Dataset",
             "description": "Modules used by the pipeline"
+        },
+        {
+            "@id": "modules/local/",
+            "@type": "Dataset",
+            "description": "Pipeline-specific modules"
         },
         {
             "@id": "modules/nf-core/",
@@ -326,7 +363,18 @@
         {
             "@id": "https://orcid.org/0000-0002-3651-5685",
             "@type": "Person",
-            "name": "Florian Heyl"
+            "affiliation": "German Cancer Research Center (DKFZ), Heidelberg, DE",
+            "email": "florian.heyl@dkfz-heidelberg.de",
+            "name": "Florian Heyl",
+            "url": "https://github.com/heylf"
+        },
+        {
+            "@id": "https://orcid.org/0000-0001-8259-7434",
+            "@type": "Person",
+            "affiliation": "Altos Labs, San Diego, USA",
+            "email": "dongzehe.zaza@gmail.com",
+            "name": "Dongze He",
+            "url": "https://github.com/dongzehe"
         }
     ]
 }
