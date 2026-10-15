@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `subworkflows/nf-core/utils_nextflow_pipeline/main.nf`: bumped the version.
 - `subworkflows/local/utils_nfcore_spatialaxe_pipeline/main.nf`: passes the new `cli_typecast` argument (`null`) through to `UTILS_NFSCHEMA_PLUGIN`.
 - `nextflow_schema.json`: cleanup driven by the new schema version.
+- removing `image_seg_methods`, `transcript_seg_methods`, and `segfree_methods` from the input parameters because this is generally not defined by the user and fixed by he pipeline.
 
 ## 1.0.1 - [06.08.2026]
 
