@@ -18,10 +18,16 @@
                     "untar": 1.34
                 },
                 "Workflow": {
-                    "nf-core/spatialaxe": "v1.0.1"
+                    "nf-core/spatialaxe": "v1.0.1dev"
                 }
             },
             [
+                "multiqc",
+                "multiqc/multiqc_data",
+                "multiqc/multiqc_data/.stub",
+                "multiqc/multiqc_plots",
+                "multiqc/multiqc_plots/.stub",
+                "multiqc/multiqc_report.html",
                 "pipeline_info",
                 "pipeline_info/nf_core_spatialaxe_software_mqc_versions.yml",
                 "preview",
@@ -33,11 +39,12 @@
                 "preview/baysor/preview/test_run",
                 "preview/baysor/preview/test_run/preview.html",
                 "preview/multiqc",
-                "preview/multiqc/multiqc_data",
-                "preview/multiqc/multiqc_data/.stub",
-                "preview/multiqc/multiqc_plots",
-                "preview/multiqc/multiqc_plots/.stub",
-                "preview/multiqc/multiqc_report.html",
+                "preview/multiqc/redefined_bundle",
+                "preview/multiqc/redefined_bundle/multiqc_data",
+                "preview/multiqc/redefined_bundle/multiqc_data/.stub",
+                "preview/multiqc/redefined_bundle/multiqc_plots",
+                "preview/multiqc/redefined_bundle/multiqc_plots/.stub",
+                "preview/multiqc/redefined_bundle/multiqc_report.html",
                 "preview/untar",
                 "preview/untar/test_run",
                 "preview/untar/test_run/.end-of-run",
@@ -76,6 +83,9 @@
                 "preview/utility/preview_data/test_run/umap_mqc.tsv"
             ],
             [
+                ".stub:md5,d41d8cd98f00b204e9800998ecf8427e",
+                ".stub:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "multiqc_report.html:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "sampled_transcripts.csv:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "preview.html:md5,d41d8cd98f00b204e9800998ecf8427e",
                 ".stub:md5,d41d8cd98f00b204e9800998ecf8427e",
@@ -111,7 +121,7 @@
                 "umap_mqc.tsv:md5,d41d8cd98f00b204e9800998ecf8427e"
             ]
         ],
-        "timestamp": "2026-07-23T15:57:29.316600844",
+        "timestamp": "2026-10-14T12:33:36.957304931",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"

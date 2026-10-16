@@ -106,9 +106,21 @@ nextflow run nf-core/spatialaxe \
    --mode qc
 ```
 
+To run [spoQC](https://github.com/heylf/spoQC) you have to set an additional option:
+
+```bash
+nextflow run nf-core/spatialaxe \
+   -profile <docker/singularity/.../institute> \
+   --input samplesheet.csv \
+   --outdir <OUTDIR> \
+   --mode qc \
+   --spoqc true
+```
+
 - QC methods:
   - [MultiQC Xenium Extra Plugin](https://github.com/MultiQC/xenium-extra)
   - [OPT](https://github.com/JEFworks-Lab/off-target-probe-tracker)
+  - [spoQC](https://github.com/heylf/spoQC)
 
 ### Image-based Segmentation mode (--mode image): <br>
 
@@ -244,7 +256,7 @@ If `-profile` is not specified, the pipeline will run locally and expect all sof
 - `apptainer`
   - A generic configuration profile to be used with [Apptainer](https://apptainer.org/)
 - `wave`
-  - A generic configuration profile to enable [Wave](https://seqera.io/wave/) containers. Use together with one of the above (requires Nextflow ` 24.03.0-edge` or later).
+  - A generic configuration profile to enable [Wave](https://seqera.io/wave/) containers. Use together with one of the above (requires Nextflow `24.03.0-edge` or later).
 - `conda`
   - A generic configuration profile to be used with [Conda](https://conda.io/docs/). Please only use Conda as a last resort i.e. when it's not possible to run the pipeline with Docker, Singularity, Podman, Shifter, Charliecloud, or Apptainer.
 
