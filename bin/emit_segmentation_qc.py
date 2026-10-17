@@ -11,16 +11,12 @@ Output: JSON file conforming to the spatialaxe QC schema.
 
 import argparse
 import json
-import sys
 from pathlib import Path
 
 import pandas as pd
 
 
-def compute_segmentation_metrics(
-    segmentation_csv: Path,
-    transcripts_csv: Path | None = None,
-) -> dict:
+def compute_segmentation_metrics(segmentation_csv: Path) -> dict:
     """Extract segmentation quality metrics from Baysor output."""
     seg = pd.read_csv(segmentation_csv)
 

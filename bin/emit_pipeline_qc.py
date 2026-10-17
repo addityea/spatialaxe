@@ -25,10 +25,10 @@ import yaml
 # Helpers
 # ---------------------------------------------------------------------------
 
-def load_qc_jsons(qc_dir: Path) -> list[dict]:
-    """Load all QC JSON files from a directory, returning a flat list."""
+def load_qc_jsons(paths: list[Path]) -> list[dict]:
+    """Load QC JSON files from an explicit list of paths, returning a flat list."""
     results = []
-    for p in sorted(qc_dir.glob("**/*_qc.json")):
+    for p in sorted(paths):
         try:
             data = json.loads(p.read_text())
             if isinstance(data, list):
@@ -186,22 +186,30 @@ def main():
         description="Collect QC JSONs and produce MultiQC custom content."
     )
     parser.add_argument(
-        "--qc-dir",
+        "--qc-files",
         required=True,
-        help="Directory containing *_qc.json files from pipeline stages.",
+        nargs="+",
+        help="One or more QC JSON file paths from pipeline stages.",
     )
     parser.add_argument(
         "--output-dir",
         default=".",
         help="Directory to write MultiQC custom content YAML files.",
     )
+    parser.add_argument(
+        "--merged-output",
+        default="all_qc_records.json",
+        help="Path to write the merged, flattened QC records as JSON.",
+    )
     args = parser.parse_args()
 
-    qc_dir = Path(args.qc_dir)
+    qc_files = [Path(f) for f in args.qc_files]
     out_dir = Path(args.output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    records = load_qc_jsons(qc_dir)
+    records = load_qc_jsons(qc_files)
+    Path(args.merged_output).write_text(json.dumps(records, indent=2))
+
     if not records:
         print("WARNING: no QC JSON files found; writing empty summary.", file=sys.stderr)
         # Write an empty placeholder

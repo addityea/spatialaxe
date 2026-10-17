@@ -19,33 +19,12 @@ process COLLECT_PIPELINE_QC {
 
     script:
     """
-    pip install --quiet pyyaml 2>/dev/null || true
-    mkdir -p qc_input mqc_output
-
-    # Stage all QC JSONs into a single directory
-    for f in ${qc_jsons}; do
-        cp "\$f" qc_input/
-    done
-
-    # Also collect the merged records for downstream use
-    python3 -c "
-import json, pathlib
-records = []
-for p in sorted(pathlib.Path('qc_input').glob('*_qc.json')):
-    try:
-        data = json.loads(p.read_text())
-        if isinstance(data, list):
-            records.extend(data)
-        else:
-            records.append(data)
-    except Exception:
-        pass
-pathlib.Path('all_qc_records.json').write_text(json.dumps(records, indent=2))
-"
+    mkdir -p mqc_output
 
     emit_pipeline_qc.py \\
-        --qc-dir qc_input \\
-        --output-dir mqc_output
+        --qc-files ${qc_jsons} \\
+        --output-dir mqc_output \\
+        --merged-output all_qc_records.json
     """
 
     stub:
