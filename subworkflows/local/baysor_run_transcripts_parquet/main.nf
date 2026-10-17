@@ -73,7 +73,7 @@ workflow BAYSOR_RUN_TRANSCRIPTS_PARQUET {
         // Tiled path has no image-based prior mask, so no auto-confidence computation.
         BAYSOR_RUN (
             PARQUET_TO_CSV.out.csv.map { meta, transcripts ->
-                tuple(meta, transcripts, [], baysor_config ? file(baysor_config) : [], baysor_tiling_scale, null)
+                tuple(meta, transcripts, [], baysor_config ? file(baysor_config) : [], baysor_tiling_scale, [])
             }
         )
 
@@ -158,31 +158,31 @@ workflow BAYSOR_RUN_TRANSCRIPTS_PARQUET {
                 params.baysor_prior_pixel_size ?: 0.2125,
             )
 
-            // Merge auto-computed confidence back with mask samples
+            // Merge auto-computed confidence (QC json path) back with mask samples
             ch_with_confidence = ch_has_mask
-                .combine(COMPUTE_PRIOR_CONFIDENCE.out.confidence_value, by: 0)
-                .map { meta, transcripts, mask, confidence ->
-                    tuple(meta, transcripts, mask, confidence)
+                .combine(COMPUTE_PRIOR_CONFIDENCE.out.confidence_json, by: 0)
+                .map { meta, transcripts, mask, confidence_json ->
+                    tuple(meta, transcripts, mask, confidence_json)
                 }
 
-            // No-mask samples get null confidence
+            // No-mask samples get no confidence json
             ch_without_confidence = ch_no_mask
                 .map { meta, transcripts, mask ->
-                    tuple(meta, transcripts, mask, null)
+                    tuple(meta, transcripts, mask, [])
                 }
 
             ch_baysor_ready = ch_with_confidence.mix(ch_without_confidence)
         } else {
             ch_baysor_ready = ch_csv_with_mask
                 .map { meta, transcripts, mask ->
-                    tuple(meta, transcripts, mask, null)
+                    tuple(meta, transcripts, mask, [])
                 }
         }
 
         ch_baysor_input = ch_baysor_ready
             .combine(ch_config)
-            .map { meta, transcripts, mask, confidence, config ->
-                tuple(meta, transcripts, mask, config, baysor_scale, confidence)
+            .map { meta, transcripts, mask, confidence_json, config ->
+                tuple(meta, transcripts, mask, config, baysor_scale, confidence_json)
             }
         BAYSOR_RUN(ch_baysor_input)
 

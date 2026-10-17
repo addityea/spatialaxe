@@ -14,7 +14,6 @@ process COMPUTE_PRIOR_CONFIDENCE {
 
     output:
     tuple val(meta), path("${meta.id}_prior_confidence_qc.json"), emit: confidence_json
-    tuple val(meta), env(CONFIDENCE_VALUE),                       emit: confidence_value
 
     when:
     task.ext.when == null || task.ext.when
@@ -23,8 +22,6 @@ process COMPUTE_PRIOR_CONFIDENCE {
     def args = task.ext.args ?: ''
     def mapping_arg = mapping ? "--mapping ${mapping}" : "--mapping linear"
     """
-    pip install --quiet tifffile 2>/dev/null || true
-
     compute_prior_confidence.py \\
         --transcripts ${transcripts} \\
         --mask ${mask} \\
@@ -33,13 +30,10 @@ process COMPUTE_PRIOR_CONFIDENCE {
         ${mapping_arg} \\
         --output ${meta.id}_prior_confidence_qc.json \\
         ${args}
-
-    CONFIDENCE_VALUE=\$(python3 -c "import json; print(json.load(open('${meta.id}_prior_confidence_qc.json'))['metrics']['prior_segmentation_confidence'])")
     """
 
     stub:
     """
-    echo '{"sample_id":"${meta.id}","stage":"prior_confidence","metrics":{"transcript_in_cell_fraction":0.65,"prior_segmentation_confidence":0.6},"mapping":"linear"}' > ${meta.id}_prior_confidence_qc.json
-    CONFIDENCE_VALUE=0.6
+    echo '{"sample_id":"${meta.id}","stage":"prior_confidence","metrics":{"transcript_in_cell_fraction":0.65,"prior_segmentation_confidence":0.6,"transcripts_out_of_bounds":0},"mapping":"linear"}' > ${meta.id}_prior_confidence_qc.json
     """
 }

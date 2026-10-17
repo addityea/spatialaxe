@@ -114,10 +114,9 @@ workflow CELLPOSE_BAYSOR_IMPORT_SEGMENTATION {
                 params.baysor_prior_confidence_mapping ?: 'linear',
                 params.baysor_prior_pixel_size ?: 0.2125,
             )
-            ch_auto_confidence = COMPUTE_PRIOR_CONFIDENCE.out.confidence_value
-                .map { meta, conf -> tuple(meta, conf) }
+            ch_auto_confidence = COMPUTE_PRIOR_CONFIDENCE.out.confidence_json
         } else {
-            ch_auto_confidence = ch_transcripts.map { meta, _t -> tuple(meta, null) }
+            ch_auto_confidence = ch_transcripts.map { meta, _t -> tuple(meta, []) }
         }
 
         // run baysor with nuclei mask
@@ -125,14 +124,14 @@ workflow CELLPOSE_BAYSOR_IMPORT_SEGMENTATION {
             .combine(RESIZE_TIF.out.resized_mask, by: 0)
             .combine(ch_auto_confidence, by: 0)
             .combine(ch_config)
-            .map { meta, transcripts, mask, confidence, config ->
+            .map { meta, transcripts, mask, confidence_json, config ->
                 tuple(
                     meta,
                     transcripts,
                     mask,
                     config,
                     30,
-                    confidence,
+                    confidence_json,
                 )
             }
         BAYSOR_RUN(ch_baysor_input)
@@ -162,10 +161,9 @@ workflow CELLPOSE_BAYSOR_IMPORT_SEGMENTATION {
                 params.baysor_prior_confidence_mapping ?: 'linear',
                 params.baysor_prior_pixel_size ?: 0.2125,
             )
-            ch_auto_confidence = COMPUTE_PRIOR_CONFIDENCE.out.confidence_value
-                .map { meta, conf -> tuple(meta, conf) }
+            ch_auto_confidence = COMPUTE_PRIOR_CONFIDENCE.out.confidence_json
         } else {
-            ch_auto_confidence = ch_transcripts.map { meta, _t -> tuple(meta, null) }
+            ch_auto_confidence = ch_transcripts.map { meta, _t -> tuple(meta, []) }
         }
 
         // run baysor with cell mask
@@ -173,14 +171,14 @@ workflow CELLPOSE_BAYSOR_IMPORT_SEGMENTATION {
             .combine(RESIZE_TIF.out.resized_mask, by: 0)
             .combine(ch_auto_confidence, by: 0)
             .combine(ch_config)
-            .map { meta, transcripts, mask, confidence, config ->
+            .map { meta, transcripts, mask, confidence_json, config ->
                 tuple(
                     meta,
                     transcripts,
                     mask,
                     config,
                     30,
-                    confidence,
+                    confidence_json,
                 )
             }
         BAYSOR_RUN(ch_baysor_input)
@@ -197,7 +195,7 @@ workflow CELLPOSE_BAYSOR_IMPORT_SEGMENTATION {
                     [],
                     config,
                     30,
-                    null,
+                    [],
                 )
             }
         BAYSOR_RUN(ch_baysor_input)
