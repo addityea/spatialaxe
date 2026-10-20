@@ -713,7 +713,7 @@ workflow SPATIALAXE {
 
     /*
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        SPATIALAXE - PIPELINE QC REPORT (Issue #208)
+        SPATIALAXE - PIPELINE QC REPORT
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     */
     // Each module emits its own QC JSON; collect and render here.
