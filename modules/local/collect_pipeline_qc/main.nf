@@ -4,8 +4,8 @@ process COLLECT_PIPELINE_QC {
 
     conda "conda-forge::python=3.11 conda-forge::pandas conda-forge::pyyaml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/94/9409ce399922a5746bea1b7df5668c3d1d79b9af49a15950d9818c4fe45ac749/data' :
-        'community.wave.seqera.io/library/pandas_procs_pyarrow:d8f882b65dfea451' }"
+        'oras://community.wave.seqera.io/library/pandas_python-abi3_pyyaml:6d5fdee8330a7baa' :
+        'community.wave.seqera.io/library/pandas_python-abi3_pyyaml:3061016ffed13c58' }"
 
     input:
     path(qc_jsons)
