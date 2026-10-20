@@ -56,6 +56,8 @@
                 "image/multiqc/redefined_bundle/multiqc_plots",
                 "image/multiqc/redefined_bundle/multiqc_plots/.stub",
                 "image/multiqc/redefined_bundle/multiqc_report.html",
+                "image/prior_confidence",
+                "image/prior_confidence/test_run_prior_confidence_qc.json",
                 "image/spatialdata",
                 "image/spatialdata/merge",
                 "image/spatialdata/merge/spatialdata",
@@ -123,6 +125,7 @@
                 ".stub:md5,d41d8cd98f00b204e9800998ecf8427e",
                 ".stub:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "multiqc_report.html:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "test_run_prior_confidence_qc.json:md5,b7e5ee6cf6fdb332fa89b7644e5e9f4a",
                 "fake_file.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "fake_file.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "fake_file.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
@@ -155,7 +158,7 @@
                 "multiqc_report.html:md5,d41d8cd98f00b204e9800998ecf8427e"
             ]
         ],
-        "timestamp": "2026-10-14T12:34:11.189343137",
+        "timestamp": "2026-10-20T16:23:19.429231313",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
