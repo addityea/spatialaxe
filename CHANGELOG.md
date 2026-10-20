@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - samplesheet redefinition: `sample,bundle,image,annotation,stainings`, samplesheet allows for two additional optional columns `annotation,stainings` that are useful for the QC subworkflow.
 - `spatialdata_write_meta_merge/main.nf`: Change to subworkflow to account for proper `qc` mode.
 - Change to `bin/spatialdata_write.py`: Adding an `all` mode to set all available features to `True`, which is important for QC.
+- Added `collect_pipeline_qc`, `emit_bundle_qc`, and `emit_segmentation_qc` modules which are called and incoorporated 
+in `workflows/spatialaxe.nf`. Also adding python scripts for modules into `bin`. Purpose of those modules is to collect
+all json files from the raw and processed data bundles coming directly from the onboarding analysis and the tools used
+for processing and creating the processed data bundle.
 
 ### `Fixed`
 

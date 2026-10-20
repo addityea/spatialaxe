@@ -174,6 +174,7 @@ We thank the following people for their extensive assistance in the development 
 - Matthias Hörtenhuber (mashehu)
 - Maxime Garcia (maxulysse)
 - Kübra Narcı (kubranarci)
+- John Adeyemo Adedeji (Jonahnki)
 
 ## Contributions and Support
 
