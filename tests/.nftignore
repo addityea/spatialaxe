@@ -94,3 +94,14 @@ qc/spatialdata/write/spatialdata/test_run/raw_bundle/points/**
 qc/spatialdata/write/spatialdata/test_run/raw_bundle/shapes/**
 qc/spatialdata/write/spatialdata/test_run/raw_bundle/tables/**
 qc/spatialdata/write/spatialdata/test_run/raw_bundle/zarr.json
+
+# pipeline QC outputs (and the MultiQC tables built from them) embed a run
+# timestamp, so their content changes every run; only existence is checked
+coordinate/pipeline_qc/test_run_bundle_qc_post_qc.json
+coordinate/pipeline_qc/summary/all_qc_records.json
+coordinate/pipeline_qc/summary/mqc_output/spatialaxe_bundle_qc_post_mqc.yaml
+coordinate/pipeline_qc/summary/mqc_output/spatialaxe_pipeline_summary_mqc.yaml
+coordinate/pipeline_qc/summary/mqc_output/spatialaxe_stage_metrics_mqc.yaml
+coordinate/multiqc/**/multiqc_spatialaxe_bundle_qc_post_table.txt
+multiqc/MultiQC-*-Xeniumranger-import-segmentation-Run_multiqc_report_data/multiqc_spatialaxe_bundle_qc_post_table.txt
+multiqc/MultiQC-*-Xeniumranger-import-segmentation-Run_multiqc_report_data/multiqc_general_stats.txt

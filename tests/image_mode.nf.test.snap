@@ -56,6 +56,14 @@
                 "image/multiqc/redefined_bundle/multiqc_plots",
                 "image/multiqc/redefined_bundle/multiqc_plots/.stub",
                 "image/multiqc/redefined_bundle/multiqc_report.html",
+                "image/pipeline_qc",
+                "image/pipeline_qc/summary",
+                "image/pipeline_qc/summary/all_qc_records.json",
+                "image/pipeline_qc/summary/mqc_output",
+                "image/pipeline_qc/summary/mqc_output/spatialaxe_pipeline_summary_mqc.yaml",
+                "image/pipeline_qc/test_run_bundle_qc_post_qc.json",
+                "image/pipeline_qc/test_run_bundle_qc_qc.json",
+                "image/pipeline_qc/test_run_segmentation_qc.json",
                 "image/spatialdata",
                 "image/spatialdata/merge",
                 "image/spatialdata/merge/spatialdata",
@@ -123,6 +131,11 @@
                 ".stub:md5,d41d8cd98f00b204e9800998ecf8427e",
                 ".stub:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "multiqc_report.html:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "all_qc_records.json:md5,58e0494c51d30eb3494f7c9198986bb9",
+                "spatialaxe_pipeline_summary_mqc.yaml:md5,acd67d68dc791a2448595adadb7010c5",
+                "test_run_bundle_qc_post_qc.json:md5,826bd89e4bce0cf71daf94bfa3706a0f",
+                "test_run_bundle_qc_qc.json:md5,f7195594435c3e895d47d9397f82c2f1",
+                "test_run_segmentation_qc.json:md5,72055c606fa7251484271a0e45f7e4a0",
                 "fake_file.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "fake_file.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "fake_file.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
@@ -155,7 +168,7 @@
                 "multiqc_report.html:md5,d41d8cd98f00b204e9800998ecf8427e"
             ]
         ],
-        "timestamp": "2026-10-14T12:34:11.189343137",
+        "timestamp": "2026-10-20T11:08:55.547922546",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
