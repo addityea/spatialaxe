@@ -39,6 +39,12 @@
                 "segfree/multiqc/redefined_bundle/multiqc_plots",
                 "segfree/multiqc/redefined_bundle/multiqc_plots/.stub",
                 "segfree/multiqc/redefined_bundle/multiqc_report.html",
+                "segfree/pipeline_qc",
+                "segfree/pipeline_qc/summary",
+                "segfree/pipeline_qc/summary/all_qc_records.json",
+                "segfree/pipeline_qc/summary/mqc_output",
+                "segfree/pipeline_qc/summary/mqc_output/spatialaxe_pipeline_summary_mqc.yaml",
+                "segfree/pipeline_qc/test_run_bundle_qc_qc.json",
                 "segfree/untar",
                 "segfree/untar/test_run",
                 "segfree/untar/test_run/.end-of-run",
@@ -74,6 +80,9 @@
                 ".stub:md5,d41d8cd98f00b204e9800998ecf8427e",
                 ".stub:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "multiqc_report.html:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "all_qc_records.json:md5,58e0494c51d30eb3494f7c9198986bb9",
+                "spatialaxe_pipeline_summary_mqc.yaml:md5,acd67d68dc791a2448595adadb7010c5",
+                "test_run_bundle_qc_qc.json:md5,f7195594435c3e895d47d9397f82c2f1",
                 ".end-of-run:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "analysis.tar.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "analysis.zarr.zip:md5,d41d8cd98f00b204e9800998ecf8427e",
@@ -98,7 +107,7 @@
                 "transcripts.zarr.zip:md5,d41d8cd98f00b204e9800998ecf8427e"
             ]
         ],
-        "timestamp": "2026-10-14T12:42:58.310787892",
+        "timestamp": "2026-10-20T14:21:11.349961104",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"

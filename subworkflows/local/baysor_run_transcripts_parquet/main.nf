@@ -205,6 +205,10 @@ workflow BAYSOR_RUN_TRANSCRIPTS_PARQUET {
     emit:
     redefined_bundle   = XENIUMRANGER_IMPORTSEGMENTATION.out.outs
     coordinate_space   = ch_coordinate_space
+    segmentation_csv   = !baysor_tiling
+                            ? BAYSOR_RUN.out.segmentation
+                                .map { meta, csv, _polygons -> tuple(meta, csv) }
+                            : channel.empty()                        // channel: [ val(meta), path(segmentation.csv) ]
     confidence_json    = (!baysor_tiling && params.baysor_prior_confidence == null)
                             ? COMPUTE_PRIOR_CONFIDENCE.out.confidence_json
                             : channel.empty()                        // channel: [ val(meta), path(json) ] — Issue #163 QC

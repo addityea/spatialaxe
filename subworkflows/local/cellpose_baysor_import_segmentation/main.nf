@@ -224,6 +224,8 @@ workflow CELLPOSE_BAYSOR_IMPORT_SEGMENTATION {
     emit:
     coordinate_space   = ch_coordinate_space                         // channel: [ val("microns") ]
     redefined_bundle   = XENIUMRANGER_IMPORTSEGMENTATION.out.outs    // channel: [ val(meta), ["redefined-xenium-bundle"] ]
+    segmentation_csv   = BAYSOR_RUN.out.segmentation
+                            .map { meta, csv, _polygons -> tuple(meta, csv) }  // channel: [ val(meta), path(segmentation.csv) ]
     confidence_json    = params.baysor_prior_confidence == null && (cell_segmentation_only || nucleus_segmentation_only)
                             ? COMPUTE_PRIOR_CONFIDENCE.out.confidence_json
                             : channel.empty()                        // channel: [ val(meta), path(json) ] — Issue #163 QC
