@@ -236,7 +236,7 @@
                     "type": "integer",
                     "default": 10,
                     "description": "Baysor --scale parameter for non-tiled runs: expected cell RADIUS in micrometers (NOT diameter). Too large merges cells (under-segmentation), too small splits cells (over-segmentation). See the scale reference table in the documentation.",
-                    "help_text": "Baysor's --scale must approximate the expected cell radius in micrometers. For Xenium data with ~10 µm cell boundaries use 5-10; for larger cell types increase accordingly (e.g. 15-30 for large tumour cells). Run with --mode preview to visually check the chosen scale before a full segmentation run."
+                    "help_text": "Baysor's --scale must approximate the expected cell radius in micrometers. For Xenium data with ~10 \u00b5m cell boundaries use 5-10; for larger cell types increase accordingly (e.g. 15-30 for large tumour cells). Run with --mode preview to visually check the chosen scale before a full segmentation run."
                 },
                 "baysor_config": {
                     "type": "string",
@@ -299,7 +299,7 @@
                 },
                 "min_qv": {
                     "type": "number",
-                    "default": 20,
+                    "default": 20.0,
                     "description": "Minimum Q-Score to pass filtering."
                 },
                 "min_x": {
@@ -309,7 +309,7 @@
                 "max_x": {
                     "type": "number",
                     "description": "only keep transcripts whose x-coordinate is less than specified limit, if no limit is specified, the default value will retain all transcripts since Xenium slide is <24000 microns in x and y (default: 24000.0)",
-                    "default": 24000
+                    "default": 24000.0
                 },
                 "min_y": {
                     "type": "number",
@@ -318,7 +318,7 @@
                 "max_y": {
                     "type": "number",
                     "description": "only keep transcripts whose y-coordinate is less than specified limit, if no limit is specified, the default value will retain all transcripts since Xenium slide is <24000 microns in x and y (default: 24000.0)",
-                    "default": 24000
+                    "default": 24000.0
                 },
                 "tiling": {
                     "type": "boolean",
@@ -342,12 +342,12 @@
                 "patch_filter_iqr_multiplier": {
                     "type": "number",
                     "description": "IQR multiplier for empirical cell size filtering during stitching.",
-                    "default": 3
+                    "default": 3.0
                 },
                 "patch_filter_z_threshold": {
                     "type": "number",
                     "description": "Z-score threshold for distribution-based cell size filtering during stitching.",
-                    "default": 4
+                    "default": 4.0
                 },
                 "csplit_x_bins": {
                     "type": "integer",
