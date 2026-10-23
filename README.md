@@ -117,6 +117,9 @@ nextflow run nf-core/spatialaxe \
    --mode preview
 ```
 
+> [!TIP]
+> Baysor's `--baysor_scale` is the expected **cell radius** in micrometers (not the diameter) and is its most sensitive parameter — too large merges cells, too small fragments them. See the [Baysor scale reference table](https://nf-co.re/spatialaxe/usage#choosing-the-baysor-scale-baysor_scale) to pick a value for your cell type, and use `--mode preview` to check it visually before a full run.
+
 ### Run just the quality control <br>
 
 ```bash

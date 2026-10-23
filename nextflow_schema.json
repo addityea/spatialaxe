@@ -234,8 +234,9 @@
                 },
                 "baysor_scale": {
                     "type": "integer",
-                    "default": 30,
-                    "description": "Baysor --scale parameter for non-tiled runs."
+                    "default": 10,
+                    "description": "Baysor --scale parameter for non-tiled runs: expected cell RADIUS in micrometers (NOT diameter). Too large merges cells (under-segmentation), too small splits cells (over-segmentation). See the scale reference table in the documentation.",
+                    "help_text": "Baysor's --scale must approximate the expected cell radius in micrometers. For Xenium data with ~10 µm cell boundaries use 5-10; for larger cell types increase accordingly (e.g. 15-30 for large tumour cells). Run with --mode preview to visually check the chosen scale before a full segmentation run."
                 },
                 "baysor_config": {
                     "type": "string",
@@ -264,8 +265,8 @@
                 },
                 "baysor_tiling_scale": {
                     "type": "integer",
-                    "default": 39,
-                    "description": "Baysor --scale for tiled runs (larger to compensate for EM on smaller tiles)."
+                    "default": 13,
+                    "description": "Baysor --scale for tiled runs: expected cell radius in micrometers, set slightly larger than --baysor_scale to compensate for EM on smaller tiles."
                 },
                 "baysor_tiling_min_mols_per_cell": {
                     "type": "integer",

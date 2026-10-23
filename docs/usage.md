@@ -83,6 +83,22 @@ nextflow run nf-core/spatialaxe \
    --mode preview
 ```
 
+### Choosing the Baysor scale (`--baysor_scale`) <br>
+
+Baysor's `--scale` parameter is the **expected cell radius in micrometers, not the diameter**. It is the most sensitive Baysor parameter: a scale that is too large merges neighbouring cells (under-segmentation), a scale that is too small splits single cells apart (over-segmentation). The default (`--baysor_scale 10`) matches typical Xenium data with ~10 µm cell boundaries; pick a value from the table below based on the cell type in your tissue:
+
+| Cell type / dataset                              | Typical diameter (µm) | Recommended `--baysor_scale` (radius, µm) |
+| ------------------------------------------------ | --------------------- | ----------------------------------------- |
+| Immune cells (lymphocytes, monocytes, microglia) | 5–10                  | 3–5                                       |
+| Xenium default cell boundaries                   | ~10                   | 5                                         |
+| Neurons and glia                                 | 10–20                 | 5–10                                      |
+| Epithelial cells / common cell lines (e.g. MCF7) | 15–25                 | 8–12                                      |
+| Hepatocytes / large epithelium                   | 25–35                 | 12–18                                     |
+| Large tumour cells, fibroblast-rich tissue       | 30–60                 | 15–30                                     |
+
+> [!TIP]
+> When in doubt, start with a smaller scale: over-segmentation is easier to recover from than merged cells. Run the pipeline with `--mode preview` to render a Baysor preview HTML and visually confirm the chosen scale before launching a full segmentation run. For tiled Baysor runs, `--baysor_tiling_scale` follows the same rule and should be set slightly larger than `--baysor_scale` (default 13) to compensate for EM on smaller tiles.
+
 ### Quality control <br>
 
 It is possible to run the quality control with `--run_qc` to couple it with another mode like so:
