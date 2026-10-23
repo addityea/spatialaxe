@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### `Fixed`
 
 - Change to input validation in `spatialaxe.nf`: Moving `morphology_focus/` folder into `bundle_optional_files` because not all Xenium bundles have such a folder.
+- `nextflow.config` / `nextflow_schema.json`: Baysor `--scale` is the expected cell **radius** in micrometers, not the diameter. Default `baysor_scale` changed 30 → 10 and `baysor_tiling_scale` 39 → 13 (aligned with Baysor upstream defaults); parameter descriptions and `docs/usage.md` now explain the radius-vs-diameter semantics and include a cell-type scale reference table (fixes #185).
 
 ### `Dependencies`
 
